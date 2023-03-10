@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/account/:accountHandler",
+      "handler": "getAccountInfo"
+    }
+  ]
+}
