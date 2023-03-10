@@ -1,14 +1,13 @@
 {
-  "name": "server",
-  "version": "1.0.0",
+  "name": "twitter-scraper",
+  "version": "1.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-  "author": "",
+  "author": "Farzaneh Sefidabi",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3",
@@ -17,7 +16,6 @@
     "pino": "^8.11.0",
     "pino-pretty": "^9.4.0",
     "puppeteer": "^19.7.2",
-    "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^4.6.2",
     "user-agents": "^1.0.1308"
   }

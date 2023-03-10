@@ -6,7 +6,7 @@ module.exports = {
     try {
       logger.debug("Opening the browser");
       return await puppeteer.launch({
-        headless: false,
+        headless: true,
         args: [
           "--disable-setuid-sandbox"
         ],

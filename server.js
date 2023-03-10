@@ -1,9 +1,8 @@
 const fs = require("fs");
 const express = require("express");
-const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const logger = require("./utils/logger");
-
+const swaggerDocument = require("./swagger.json");
 require("dotenv").config();
 
 const app = express();
@@ -15,7 +14,7 @@ app.get("/", function (req, res, next) {
     const routes = require(`./api/${apiName}/routes/${apiName}.routes.json`);
     const controllers = require(`./api/${apiName}/controllers/${apiName}.controllers.js`);
     routes.routes.forEach(route => {
-      app[route.method.toLowerCase()](route.path, controllers[route.handler]);
+      app[route.method.toLowerCase()](`/api${route.path}`, controllers[route.handler]);
     });
   });
   res.send("Twitter Watch");
@@ -26,6 +25,12 @@ app.use(function (req, res, next) {
   logger.info(`Sending ${req.method} request to ${req.url}`);
   next();
 });
+
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocument)
+);
 
 const port = process.env.PORT || 8585;
 app.listen(port, () => {

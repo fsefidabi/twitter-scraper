@@ -1,0 +1,111 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Twitter Scraper API",
+    "description": "A twitter scraper that crawls user profile page and extract user's info and tweets.",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:8585",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/account/{accountHandler}": {
+      "get": {
+        "summary": "Get account info and published tweets",
+        "tags": ["api"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "accountHandler",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "user's account handler (username)"
+          },
+          {
+            "in": "query",
+            "name": "startDate",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "start date for crawling tweets"
+          },
+          {
+            "in": "query",
+            "name": "endDate",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "last date for crawling tweets"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Invalid account handler"
+          }
+        }
+      }
+    },
+    "/tweets/{accountHandler}": {
+      "get": {
+        "summary": "Get published tweets for account",
+        "tags": ["api"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "accountHandler",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "user's account handler (username)"
+          },
+          {
+            "in": "query",
+            "name": "startDate",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "start date for crawling tweets"
+          },
+          {
+            "in": "query",
+            "name": "endDate",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "last date for crawling tweets"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Invalid account handler"
+          }
+        }
+      }
+    }
+  }
+}
