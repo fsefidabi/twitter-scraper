@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tweets/:accountHandler",
+      "handler": "getAccountTweets"
+    }
+  ]
+}
